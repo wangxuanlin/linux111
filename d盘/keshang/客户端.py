@@ -57,70 +57,54 @@
 #
 #     f.close()
 #     print('上传成功')
+# import socket
+#
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# s.connect(('www.baidu.com', 80))
+# s.send(b'GET / HTTP/1.1\r\nHost:www.baidu.com\r\nConnection: close\r\n\r\n')
+#
+# buffer = []
+# while 1:
+#     d = s.recv(1024)
+#     if d:
+#         buffer.append(d)
+#     else:
+#         break
+# data = b''.join(buffer)
+#
+# s.close()
+#
+# header, html = data.split(b'\r\n\r\n', 1)
+# print(header.decode('utf-8'))
+# with open('baidu.html', 'wb')as f:
+#     f.write(html)
+# import os
+# dir_name = os.path.dirname(__file__)
+#
+# jpg_name = os.path.join(dir_name, '3_1.png')
+# jpg_name1 = os.path.join(dir_name, '3_1_copy1.png')
+#
+# with open(jpg_name, 'rb') as f:
+#     b_file = f.read()
+#
+# with open(jpg_name, 'wb') as f:
+#     f.write(b_file)
+
+
 import socket
-import sys
-import time
 
-if __name__ == '__main__':
-    # 创建套接字
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    except socket.eorror, e:
-        print
-        'socket false:%s' % e
-    print
-    'socket ...'
-
-    # 连接百度ip
-    try:
-        sock.connect(('220.181.111.148', 80))
-    except socket.error, e:
-        print
-        'connect false %s' % e
-        sock.close()
-    print
-    'connect ...'
-
-    # 发送百度首页面请求并且保持连接
-    try:
-        print
-        'send start...'
-        str = 'GET / HTTP/1.1\r\nHost:www.baidu.com\r\nConnection:keep-alive\r\n\r\n'
-        sock.send(str)
-    except socket.eorror, e:
-        print('send false')
-        sock.close()
-
-    data = ''
-    data = sock.recv(1024)
-    while (1):
-    print(data)
-    beg = data.find('Content-Length:', 0, len(data))
-    end = data.find('Content-Type:', 0, len(data))
-    print(beg)
-    print(end)
-    if (beg == end):
-        print('connecting closed')
-        break
-    num = long(data[beg + 16:end - 2])
-    print(num)
-    nums = 0
-    while (1):
-        data = sock.recv(1024)
-        print(data)
-        nums += len(data)
-        if (nums >= num):
-            break
-    word = raw_input('please input your word----->')
-    str = '''GET /s?wd=''' + word + ''' HTTP/1.1
-Host:www.baidu.com
-Connection: Keep-Alive
-'''
-    print(str)
-    sock.send(str)
-    data = ''
-    data = sock.recv(1024)
-sock.close()
-print(data)
-
----------------------
+addrss = ('127.0.0.1', 1310)
+ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+ss.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+ss.bind(addrss)
+ss.listen(1)
+print('Sering HTTP on port %s ...'%1310)
+while 1:
+    cli, add = ss.accept()
+    request = cli.recv(1024)
+    print(request)
+    http_response = b'''
+    HTTP/1.1 200 OK\r\n\r\n
+    HELLO,WORLD'''
+    cli.send(http_response)
+    cli.close()
