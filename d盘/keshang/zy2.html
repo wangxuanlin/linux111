@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<forn><
+    <dt>
+        <dd>品牌：<input type="text" placeholder="请输入品牌" id="i1"></dd>
+        <dd>型号：<input type="text" placeholder="请输入产品型号" id="i2"></dd>
+        <dd>参数：<input type="text" placeholder="请输入产品参数" id="i3"></dd>
+        <dd>价格：<input type="text" placeholder="请设置产品价格" id="i4"></dd>
+        <dd><input type="submit" value="添加信息" id="i5" ></dd>
+    </dt>
+</forn>
+<table border="1px solid" cellspacing="0px" id="t1">
+    <thead><tr><td>品牌</td><td>型号</td><td>参数</td><td>价格</td></tr></thead>
+    <tbody id="t2">
+
+    </tbody>
+</table>
+<script>
+    var sub = document.getElementById('i5');
+    sub.onclick = function (ev) {
+        var i1 = document.getElementById('i1');
+        var i2 = document.getElementById('i2');
+        var i3 = document.getElementById('i3');
+        var i4 = document.getElementById('i4');
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>'+ i1.value + '</td>'+'<td>'+ i2.value+'</td>'+'<td>' + i3+'</td>'+'<td>'+i4+'</td>';
+        var body = document.getElementById('t2');
+        body.appendChild(tr);
+        i1.value ='';
+        i2.value ='';
+        i3.value ='';
+        i4.value ='';
+
+    }
+
+</script>
+</body>
+</html>

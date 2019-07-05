@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="xxx.css">
+    <script src="jq.js"></script>
+</head>
+<body>
+<form>
+    <input type="submit" id="i1" value="不付钱离开" onclick="f1()">
+    <input type="submit" id="i2" value="付钱离开" onclick="f2()">
+    <input type="submit" id="i3" value="加钟" onclick="f3()" class="jia">
+    <header id="d1"></header>
+</form>
+<script>
+    // var j = document.getElementById('i1');
+    // var j = $('#i1').css('color', 'blue');
+    // var k = $('input').css('color', 'red');
+    var l = $('.jia');
+    var k = $('input');
+    k.css('color', 'blue');
+    var  i2 = $('#i2').click(function () {
+        alert('客官不可以')
+
+    });
+    $('#i3').click(function () {
+        alert('客官加钟一小时')
+
+    });
+    $('#d1').append(
+        '<header>大包厢</header>'
+    )
+</script>
+
+</body>
+</html>

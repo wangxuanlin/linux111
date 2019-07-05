@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+    </script>
+</head>
+<body>
+<div>
+    <input name="myt" type="text" value="1" id="ip1">
+    <input name="myt" type="text" value="2">
+    <input name="myt" type="text" value="3">
+    <input name="myt" type="text" value="4" class="p1901">
+    <input name="myt" type="text" value="5" class="p1901">
+    <input name="myt" type="text" value="6" class="p1901" id="ip6">
+
+</div>
+<fora>
+    <input type="submit" id="i1" value="不付钱离开" onclick="f1()">
+    <input type="submit" id="i2" value="付钱离开" onclick="f2()">
+    <input type="submit" id="i3" value="加钟" onclick="f3()">
+</fora>
+<script>
+    var input = document.getElementById('i3');
+    input.on
+    document.getElementById('i2').onclick =function () {
+        alert(' 欢迎下次光临')
+        
+    };
+
+    var  f1 = function () {
+        alert(' 客官请付费')
+
+    };
+    var  ip0 = document.getElementsByTagName('input');
+    var  ip1 = document.getElementById('ip1');
+    var  ip2 = document.getElementsByClassName('p1901');
+    ip1.setAttribute('value', '空调');
+    ip0[0].value = 'p1901';
+    var  div1 = document.getElementsByTagName('div');
+    var  div = div1[0];
+    var  input = div.children;
+    for (i in input){
+        console.log(input[i].nodeName);
+        if (input[i].nodeName === 'INPUT'){
+            input[i].value = 'p1901';
+        }
+    }
+    div = ip1.parentNode;
+    ip1.nextSibling.nextSibling.value = 'sfsafa';
+    var ip6 = document.getElementById('ip6');
+    var ip5 = ip6.previousElementSibling;
+    ip5.value = 'jksljfk';
+    ip5.style.color = 'red';
+
+    var  h1 = document.createElement('h1');
+    h1.innerHTML = '金正恩抵俄 满面笑容走出火车站 前往莆田系医院';
+    div.appendChild(h1)
+
+
+</script>
+</body>
+</html>

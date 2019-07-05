@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    /*权值来确定他这个选择器的权值*/
+    /*／*ID 权值 100*／*/
+    /*／*class 权值 10*／*/
+    /*／*标签 权值 1*／*/
+    /*／*多个选择器 最大叠加9次*／*/
+    /*／*行内 权值 10000*／*/
+        #l1{
+        color: red;
+        }
+        .p1{
+        color: blue;}
+    </style>
+</head>
+<body>
+<table border="1" content="0">
+    <tr>
+        <td>
+            不知妻美
+        </td>
+
+        <td>
+            悔初创业
+        </td>
+        <td>
+            996开创者
+        </td>
+
+        <td>
+            下周回国
+        </td>
+
+        <td>
+            普通家庭
+        </td>
+
+    </tr>
+    <tr>
+        <td id="l1" class="p1">刘强东</td>
+         <td colspan="2" class="p1">马云</td>
+         <td>贾耀庭</td>
+         <td>马化腾</td>
+    </tr>
+</table>
+</body>
+</html>

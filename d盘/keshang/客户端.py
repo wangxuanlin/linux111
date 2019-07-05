@@ -90,21 +90,48 @@
 # with open(jpg_name, 'wb') as f:
 #     f.write(b_file)
 
+#
+# import socket
+#
+# addrss = ('127.0.0.1', 1310)
+# ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# ss.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+# ss.bind(addrss)
+# ss.listen(1)
+# print('Sering HTTP on port %s ...' % 1310)
+# while 1:
+#     cli, add = ss.accept()
+#     request = cli.recv(1024)
+#     print(request)
+#     msg1 = b"""
+#      HTTP/1.1 200 OK\r\n\r\n Hello,world!
+#      """
+#     cli.send(msg1)
+#     cli.close()
+# import socket
+# ss = socket.socket()
+# addr = ('0.0.0.0', 9527)
+# ss.bind(addr)
+# ss.listen()
+# while 1:
+#     conn ,add = ss.accept()
+#     repquest = conn.recv(1024)
+#     print(repquest)
+#     msg1 = b"""
+#        HTTP/1.1 200 OK\r\n\r\n Hello,world!
+#         """
+#     conn.send(msg1)
+#     conn.close()
 
 import socket
-
-addrss = ('127.0.0.1', 1310)
-ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-ss.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-ss.bind(addrss)
-ss.listen(1)
-print('Sering HTTP on port %s ...'%1310)
+ss = socket.socket()
+address = ('127.0.0.1', 9527)
+ss.bind(address)
+ss.listen(100)
+header ='HTTP/1.1 200 OK Content-Typ：text/html'
+print('The server is running on por{}'.format(address[-1]))
 while 1:
-    cli, add = ss.accept()
-    request = cli.recv(1024)
-    print(request)
-    http_response = b'''
-    HTTP/1.1 200 OK\r\n\r\n
-    HELLO,WORLD'''
-    cli.send(http_response)
-    cli.close()
+    conn, addr = ss.accept()
+    request = conn.recv(1024)
+    conn.send(bytes(header + 'hello world', 'utf8'))
+    conn.close()
